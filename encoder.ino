@@ -25,11 +25,11 @@ if (most != ezelott)
  //Serial.println("teker"); 
  if(digitalRead(outputdt)!= most)
  {
-  szamlalo--;
+  szamlalo=szamlalo-5;
   }
   else
   {
-  szamlalo++;  
+  szamlalo=szamlalo+5;  
   }
 
   szamlalo=constrain(szamlalo,0,100);
