@@ -6,10 +6,15 @@
   int most=1;
   int ezelott=1;
   int szamlalo=0;
+  int led=5;
+  byte fenyero=0;
 void setup() {
  Serial.begin (9600);
 Serial.println("encoder kezelő program");
 for(int i=2;i<=4;i++) pinMode(i, INPUT_PULLUP);
+
+pinMode(led,OUTPUT);
+digitalWrite(led,1);
 }
 
 void loop() {
@@ -27,18 +32,19 @@ if (most != ezelott)
   szamlalo++;  
   }
 
-  szamlalo=constrain(szamlalo,-10,10);
+  szamlalo=constrain(szamlalo,0,100);
 Serial.println(szamlalo);
   
 }
 ezelott=most;
-
+fenyero=map(szamlalo,0,100,0,255);
+analogWrite(led, fenyero);
 if (digitalRead(sw)==0)
 {
   delay(100);
   if (digitalRead(sw)==0){
   Serial.println(szamlalo);
-  szamlalo=0;
+  szamlalo=50;
   }
   }
 
