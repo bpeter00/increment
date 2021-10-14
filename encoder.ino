@@ -26,10 +26,21 @@ if (most != ezelott)
   {
   szamlalo++;  
   }
+
+  szamlalo=constrain(szamlalo,-10,10);
 Serial.println(szamlalo);
   
 }
 ezelott=most;
+
+if (digitalRead(sw)==0)
+{
+  delay(100);
+  if (digitalRead(sw)==0){
+  Serial.println(szamlalo);
+  szamlalo=0;
+  }
+  }
 
  
 }
