@@ -5,6 +5,7 @@
   int outputdt=3;
   int most=1;
   int ezelott=1;
+  int szamlalo=0;
 void setup() {
  Serial.begin (9600);
 Serial.println("encoder kezelő program");
@@ -16,7 +17,17 @@ void loop() {
 most=digitalRead(outputclk);
 if (most != ezelott)
 {
- Serial.println("teker");  
+ //Serial.println("teker"); 
+ if(digitalRead(outputdt)!= most)
+ {
+  szamlalo--;
+  }
+  else
+  {
+  szamlalo++;  
+  }
+Serial.println(szamlalo);
+  
 }
 ezelott=most;
 
